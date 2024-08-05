@@ -1,8 +1,8 @@
 {
-  "username": "luckymk.mcs2024",
-  "password": "Okpahec5",
-  "server": "mail.cmi.ac.in",
+  "username": "[ENTER USERNAME HERE]",
+  "password": "[ENTER PASSWORD HERE]",
+  "server": "[MAIL SERVER ADDRESS]",
   "port": 993,
-  "folder": "INBOX",
-  "output_folder": "C:/Users/LUCKY/Documents/CMI MAIL BACKUP"
+  "folder": "[MAIL FOLDER TO BACKUP]",
+  "output_folder": "[LOCAL SYSTEM FOLDER TO BACK UP TO]"
 }
