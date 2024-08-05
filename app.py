@@ -1,6 +1,7 @@
 import json
 from imap_tools import MailBox
 import os
+from pathlib import Path
 
 with open('config.json') as file :
     # print(data)
@@ -49,16 +50,19 @@ with MailBox(SERVER).login(USER, PASSWORD, FOLDER) as mb:
 
             # out_folder_path = codecs.decode(out_folder_path, "unicode_escape")
             # print(out_folder_path)
-            os.makedirs(out_folder_path)
+            path_obj = Path(out_folder_path)
+
+            if not path_obj.exists():
+                os.makedirs(out_folder_path)
 
             to_write = f"UID = {uid_tmp}\n\n"
             to_write += f"FROM = {msg_from}\n\n"
             to_write += f"SUBJECT = {msg_sub}\n\n"
             to_write += f"Content :\n{msg_text}"
 
-            with open(f"{out_folder_path}/{uid_tmp}.txt", 'w') as f:
+            with open(f"{out_folder_path}/{uid_tmp}.txt", 'w', encoding = "utf-8") as f:
                 f.write(to_write)
-            with open(f"{out_folder_path}/{uid_tmp}.html", 'w') as f:
+            with open(f"{out_folder_path}/{uid_tmp}.html", 'w', encoding="utf-8") as f:
                 f.write(msg_html)
             BACKED_UIDS.append(uid_tmp)
             print("done!")
